@@ -1,17 +1,12 @@
-.App{
-  text-align: center;
+.App-header nav ul{
+  list-style-type: none;
+  padding: 0;
 }
-.App-header{
-  background-color: aqua;
+.App-header nav ul li{
+  display: inline;
+  margin-right: 10px;
 }
-h1{
-  animation: spin infinite 20s linear;
-}
-@keyframes spin {
-  from{
-    transform: rotate(0deg);
-  }
-  to{
-    transform: rotate(360deg);
-  }
+.App-header nav ul li a{
+  text-decoration: none;
+  color: black;
 }

@@ -1,35 +1,37 @@
-import React, { useState } from "react";
+import React from "react";
 import './App.css';
-import Hello from "./Hello";
-import Greeting from "./Greeting";
-import ToggleButton from "./ToggleButton";
+import { BrowserRouter as Router,Route, Routes, Link } from "react-router-dom";
+import Home from './Home';
+import ProductList from "./ProductList";
+import ProductDetail from "./ProductDetail";
+import Cart from './Cart';
+import Checkout from "./Checkout";
 
-function App (){
-  const [count, setCount] = useState(0);
-  const [name, setName] = useState("John Doe");
+function App(){
   return(
-    <div className="App">
-      <header className="App-header">
-        <h1>Hello World!</h1>
-
-        <p>Count: {count}</p>
-        <button onClick={()=> setCount(count+1)}>Increment</button>
-
-        <Hello message= "Hello Props!"/>
-
-        <Greeting name= "John Doe"/>
-
-        <input type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Enter Your Name.."
-        />
-
-        <ToggleButton/>
-        
-      </header>
-
-    </div>
+    <Router> 
+      <div className="App">
+    <header className="App-header">
+      Welcome to the E-commerce App
+      <nav>
+        <ul>
+          <li><Link to= "/">Home</Link></li>
+          <li><Link to="/products">Prodcuts</Link></li>
+          <li><Link to="/cart">Cart</Link></li>
+          <li><Link to="/checkout">Checkout</Link></li>
+        </ul>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/products" element={<ProductList/>}/>
+        <Route path="/product/:id" element={<ProductDetail/>}/>
+        <Route path="/cart" element={<Cart/>}/>
+        <Route path="/checkout" element={<Checkout/>}/>
+      </Routes>
+        </header>
+        </div>
+   
+          </Router>
   );
 }
 export default App;
